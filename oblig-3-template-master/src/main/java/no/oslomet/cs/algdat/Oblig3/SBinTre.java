@@ -144,22 +144,21 @@ public class SBinTre<T> {
         {
             if (p.venstre != null) p = p.venstre;
             else if (p.høyre != null) p = p.høyre;
-            else return p;
+            else return p; // returnerer første postorden
         }
         //throw new UnsupportedOperationException("Ikke kodet ennå!");
     }
 
     private static <T> Node<T> nestePostorden(Node<T> p) {
-        førstePostorden(p);
-        while (true)  // venstre -> høyre -> node (finner første node uten noen barn)
-        {
-            if (p.venstre != null) p = p.venstre;
-            else if (p.høyre != null) p = p.høyre;
-            else return p;
-        }
-
+        if (p.forelder == null) return null; // p er siste node i postorden (rotnode)'
+        Node<T> f = p.forelder; // hjelpenode (forelder til p)
+        if (f.høyre == p) return f; // Hvis p er høyre barn til sin forelder f, er forelderen f den neste
+        // Hvis p er venstre barn til sin forelder f, gjelder:
+        else if (f.høyre == null) return f; // Hvis p er enebarn (f.høyre er null), er forelderen f den neste.
+        else return førstePostorden(f.høyre); // Hvis p ikke er enebarn (dvs. f.høyre er ikke null), så er den neste den noden som kommer først i postorden i subtreet med f.høyre som rot.
         //throw new UnsupportedOperationException("Ikke kodet ennå!");
     }
+
 
     public void postorden(Oppgave<? super T> oppgave) {
         throw new UnsupportedOperationException("Ikke kodet ennå!");

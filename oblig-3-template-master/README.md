@@ -14,3 +14,15 @@ I oppgave 2 så brukte jeg en while løkke til å søke gjennom treet, anvendete
 veriden vi søker etter og verdien til noden. Hvis verdien vi søker etter er mindre går vi til venstre i treet,
 hvis verdien er større går vi til høyre, og hvis den er lik så inkremerer vi variable antall_verdi med 1 og går
 til hæyre i treet. While løkken kjører fram til vi er ute av treet og returnerer deretter antall_verdi.
+
+I oppgave 3 fulgte jeg egentlig bare forklaring av den første og neste til postorden gitt i kompendium.
+Metoden toStringPostOrder() er ferdig programmert, så jeg vet vi sjekker for om treet er tomt først,
+vet også at vi sender rotnode til metoden førstePostorden(). førstePostorden kjører en while-løkke fram til 
+vi kommer til en node uten noen barn. Fram til vi når denne sjekker vi først venstre barn og hvis det finnes peker
+vi til venstre node. Hvis det ikke finnes noe venstre barn peker vi til høyre barn.
+Til metoden nestePostorden() vet vi at vi sender først inn førstePostorden(rot) derfor trenger vi ikke å sjekke for
+om treet er tomt eller sette en node til rotnode i metoden. Sjekker først om forelder til p er null --> p er siste node 
+i postorden (rotnode). Anvedner deretter en hjelpenode f som vi setter til forelderen til p. Hvis p er høyre barn til f 
+returnerer vi f da dette er neste i postorden, hvis p er venstre barn til sin forelder f og p er enebarn returnerer vi også f.
+Hvis p er venstre barn til sin forelder f og p ikke er enebarn så er den neste i postorden førstePostorden til subtreet med 
+med høyre barnet til foreldereb til p som rot.

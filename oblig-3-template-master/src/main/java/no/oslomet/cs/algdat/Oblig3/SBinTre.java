@@ -139,21 +139,26 @@ public class SBinTre<T> {
     private static <T> Node<T> førstePostorden(Node<T> p) {
         //Objects.requireNonNull(p.verdi, "Ulovlig med nullverdier!");
         //if (tom()) throw new NoSuchElementException("Treet er tomt!");
-
-        Node<T> p = rot;
-        while (true)
+        //Node<T> p = rot;
+        while (true)  // venstre -> høyre -> node (finner første node uten noen barn)
         {
             if (p.venstre != null) p = p.venstre;
             else if (p.høyre != null) p = p.høyre;
-            else return p.verdi;
+            else return p;
         }
-
-
         //throw new UnsupportedOperationException("Ikke kodet ennå!");
     }
 
     private static <T> Node<T> nestePostorden(Node<T> p) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+        førstePostorden(p);
+        while (true)  // venstre -> høyre -> node (finner første node uten noen barn)
+        {
+            if (p.venstre != null) p = p.venstre;
+            else if (p.høyre != null) p = p.høyre;
+            else return p;
+        }
+
+        //throw new UnsupportedOperationException("Ikke kodet ennå!");
     }
 
     public void postorden(Oppgave<? super T> oppgave) {

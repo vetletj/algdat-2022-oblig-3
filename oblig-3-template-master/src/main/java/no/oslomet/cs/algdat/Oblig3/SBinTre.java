@@ -1,10 +1,7 @@
 package no.oslomet.cs.algdat.Oblig3;
 
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Objects;
-import java.util.StringJoiner;
+import java.util.*;
 
 public class SBinTre<T> {
     private static final class Node<T>   // en indre nodeklasse
@@ -118,7 +115,21 @@ public class SBinTre<T> {
     }
 
     public int antall(T verdi) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+        Objects.requireNonNull(verdi, "Ulovlig med nullverdier!");
+        Node<T> p = rot; // Setter node p = rotnode
+        int antall_verdi = 0;
+        while (p != null)
+        {
+            int cmp = comp.compare(verdi, p.verdi); // Sammenlikner så vi vet om vi skal gå til høyre eller venstre node
+            if (cmp < 0) p = p.venstre;
+            else if (cmp > 0) p = p.høyre;
+            else {
+                p = p.høyre;
+                antall_verdi++;
+            }
+        }
+        return antall_verdi;
+        //throw new UnsupportedOperationException("Ikke kodet ennå!");
     }
 
     public void nullstill() {
@@ -126,7 +137,19 @@ public class SBinTre<T> {
     }
 
     private static <T> Node<T> førstePostorden(Node<T> p) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+        //Objects.requireNonNull(p.verdi, "Ulovlig med nullverdier!");
+        //if (tom()) throw new NoSuchElementException("Treet er tomt!");
+
+        Node<T> p = rot;
+        while (true)
+        {
+            if (p.venstre != null) p = p.venstre;
+            else if (p.høyre != null) p = p.høyre;
+            else return p.verdi;
+        }
+
+
+        //throw new UnsupportedOperationException("Ikke kodet ennå!");
     }
 
     private static <T> Node<T> nestePostorden(Node<T> p) {

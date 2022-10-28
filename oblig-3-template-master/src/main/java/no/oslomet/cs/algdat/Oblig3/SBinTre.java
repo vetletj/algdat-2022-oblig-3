@@ -174,13 +174,13 @@ public class SBinTre<T> {
     }
 
     public void postordenRecursive(Oppgave<? super T> oppgave) {
-        postordenRecursive(rot, oppgave);
+        if (!tom()) postordenRecursive(rot, oppgave); // sjekker først om treet er tomt
     }
 
     private void postordenRecursive(Node<T> p, Oppgave<? super T> oppgave) {
-        if (p.forelder == null) førstePostorden(p);
-        if
+        if (p.venstre != null) postordenRecursive(p.venstre,oppgave);  // til venstre barn
         oppgave.utførOppgave(p.verdi);
+        if (p.høyre != null) postordenRecursive(p.høyre,oppgave);      // til høyre barn
 
         //throw new UnsupportedOperationException("Ikke kodet ennå!");
     }

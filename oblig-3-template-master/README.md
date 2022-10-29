@@ -26,3 +26,8 @@ i postorden (rotnode). Anvedner deretter en hjelpenode f som vi setter til forel
 returnerer vi f da dette er neste i postorden, hvis p er venstre barn til sin forelder f og p er enebarn returnerer vi også f.
 Hvis p er venstre barn til sin forelder f og p ikke er enebarn så er den neste i postorden førstePostorden til subtreet med 
 med høyre barnet til foreldereb til p som rot.
+
+I oppgave 4, iterativ postorden metode sjekket jeg først om treet var tomt med metoden tom() som allerede var programmert.
+Deretter setter jeg ny node, p, til første postorden ved bruk av første postorden metoden programmert i oppgave 1, vidre anvender
+jeg en while-løkke som kjører fram til p er lik null, som vil si at vi er ute av treet, ettersom inni løkken kjører vi først oppgaven
+men også neste postorden metoden som ble programmert i oppgave 2. Den vil ikke bli null før vi er ute av treet. 

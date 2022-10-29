@@ -179,10 +179,10 @@ public class SBinTre<T> {
 
     private void postordenRecursive(Node<T> p, Oppgave<? super T> oppgave) {
         if (p == null) return;
-        oppgave.utførOppgave(p.verdi);
+        // Kopiert fra kompendium programkode 5.1.7 a), bare bytter om fra node -> venstre -> høyre til venste -> høyre -> node
         postordenRecursive(p.venstre,oppgave);  // til venstre barn
         postordenRecursive(p.høyre,oppgave);      // til høyre barn
-
+        oppgave.utførOppgave(p.verdi);
         //throw new UnsupportedOperationException("Ikke kodet ennå!");
     }
 
